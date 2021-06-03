@@ -14,7 +14,15 @@ public class TetrisCanvas extends JPanel implements Runnable, KeyListener {
 	protected Piece current;
 	protected int interval = 2000;
 	protected int level = 2;
-
+	protected int score;
+	protected MyTetris mytetris;
+	public void Score() {
+		score = data.getLine() * 175 * level;
+		//출처: https://nota.tistory.com/49 [nota's story]
+		String score1 = Integer.toString(score);		
+		mytetris.score().setText(score1);
+	}
+	
 	public TetrisCanvas() {
 		data = new TetrisData();
 
@@ -115,12 +123,13 @@ public class TetrisCanvas extends JPanel implements Runnable, KeyListener {
 						makeNew = true;
 						if (current.copy()) {
 							stop();
-							int score = data.getLine() * 175 * level;
+							Score();
 							JOptionPane.showMessageDialog(this, "게임끝\n점수 : " + score);
 						}
 						current = null;
 					}
 					data.removeLines();
+					
 				}
 				repaint();
 				Thread.currentThread();
@@ -150,7 +159,7 @@ public class TetrisCanvas extends JPanel implements Runnable, KeyListener {
 				makeNew = true;
 				if (current.copy()) {
 					stop();
-					int score = data.getLine() * 175 * level;
+					Score();
 					JOptionPane.showMessageDialog(this, "게임끝\n점수 : " + score);
 				}
 			}

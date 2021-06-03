@@ -15,6 +15,7 @@ public class MyTetris extends JFrame {
 	private JPanel contentPane;
 	private TetrisCanvas tetrisCanvas = null;
 	private TetrisData data;
+	private JTextPane score;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -74,21 +75,22 @@ public class MyTetris extends JFrame {
 
 		contentPane.add(splitPane, BorderLayout.NORTH);
 
-		JTextPane score = new JTextPane();
-		score.setFocusable(false);
+		score = new JTextPane();
 		splitPane.setLeftComponent(score);
 
 		JTextPane textPane_3 = new JTextPane();
-		textPane_3.setFocusable(false);
 		splitPane.setRightComponent(textPane_3);
 
 		splitPane.setResizeWeight(0.5);
 	}
-	
+
 	public TetrisData TetrisData() {
 		return data;
 	}
 	public TetrisCanvas TetrisCanvas() {
 		return tetrisCanvas;
+	}
+	public JTextPane score() {
+		return score;
 	}
 }

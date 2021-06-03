@@ -22,6 +22,7 @@ public class TetrisData {
 	}
 	
 	public int getLine() {
+		
 		return line;
 	}
 	
